@@ -48,7 +48,7 @@
                 <?php
 
                 //ciao mamma guarda come mi diverto
-                try{//burro
+                try{//burro giovanni
                     $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
                     $query = $pdo->prepare("SELECT id, nome, cognome FROM prof");
                     $query->execute();
