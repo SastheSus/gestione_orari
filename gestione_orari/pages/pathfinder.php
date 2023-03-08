@@ -5,13 +5,14 @@ $idAss=0;
 try{
 $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
 
-$text = "SELECT idProf
-         FROM assenza
+$text = "SELECT idProf, giorno, ora
+         FROM assenza, ora
          WHERE id = ?
-         ORDER BY oreSup ASC";
+         AND idOra=ora.id";
 
 $query= $pdo->prepare($text);
-$query->execute([$id,'DISPOSIZIONE',$d,$h]);
+$query->execute([$id]);
+$row = $query->fetchAll();
 
 $text = "SELECT profhaora.idProf, prof.nome, prof.cognome, prof.oreSup
          FROM ora, prof, profhaora
@@ -24,7 +25,7 @@ $text = "SELECT profhaora.idProf, prof.nome, prof.cognome, prof.oreSup
          ORDER BY oreSup ASC";
 
 $query= $pdo->prepare($text);
-$query->execute([$id,'DISPOSIZIONE',$d,$h]);
+$query->execute([$row[0]['idProf'],'DISPOSIZIONE',$row[0]['giorno'],$row[0]['ora']]);
 $row = $query->fetchAll();
 
 }
