@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    <script src="../script/script.js"></script>
     <script>
         function Apri(){
             document.getElementById("sidebar").style.display="block";
@@ -52,7 +53,7 @@
                     $query->execute();
 
                     while($row=$query->fetch()){
-                        echo "<button>".$row['nome']." ".$row['cognome']." (".$row['giorno']." ".$row['ora'].")</button>";
+                        echo "<button onclick='pathfinder('".$row[0]."')'>".$row['nome']." ".$row['cognome']." (".$row['giorno']." ".$row['ora'].")</button>";
                     }
 
                     $text = "SELECT supplenza.id, supplenza.idProf, idAssenza
