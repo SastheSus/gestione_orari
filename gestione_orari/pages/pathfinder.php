@@ -25,12 +25,8 @@ $text = "SELECT profhaora.idProf, prof.nome, prof.cognome, prof.oreSup
 
 $query= $pdo->prepare($text);
 $query->execute([$id,'DISPOSIZIONE',$d,$h]);
+$row = $query->fetchAll();
 
-while ($row = $query->fetch()) {
-    $hint = array();
-    array_push($hint,$row);
-    echo $hint[0];
-}
 }
 catch (PDOException $e){
     echo "Impossibile connettersi al server di database. ".$e;
