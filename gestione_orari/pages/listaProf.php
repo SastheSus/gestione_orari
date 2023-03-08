@@ -47,7 +47,7 @@
             <form id="listaProf" method="post" action="orarioProf.php" >
                 <?php
 
-                try{
+                try{//burro
                     $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
                     $query = $pdo->prepare("SELECT id, nome, cognome FROM prof");
                     $query->execute();
