@@ -45,7 +45,6 @@
                 <button id="invia">Invia</button>
             </div>
             <form id="listaProf" method="post" action="orarioProf.php" >
-                <!-- PHP --->
                 <?php
 
                 try{

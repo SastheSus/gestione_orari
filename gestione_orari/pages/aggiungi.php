@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GESTIONE</title>
     <link rel="stylesheet" href="../style/stileAggiungi.css">
-    <!-- MODIFICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
@@ -27,7 +26,6 @@
         <h1><b>I.I.S ITALO CALVINO</b></h1>
     </header>
     <div id="sidebar">
-        <!--MODIFICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
         <button onclick="chiudi()" id="butClose"><img src="../images/chiudi.png" alt=""></button>
         <a href="listaProf.php"><p>PROFESSORI</p></a>
         <a href="listaSezioni.php"><p>SEZIONI</p></a>
