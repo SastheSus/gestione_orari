@@ -13,7 +13,6 @@
         function Apri(){
             document.getElementById("sidebar").style.display="block";
             document.getElementById("Apri").style.display="none";
-            console.log("SCEMO CHI LEGGE");
             document.getElementById("contenitore").style.left="200px";
         }
         function chiudi(){
@@ -41,30 +40,29 @@
         <div id="classi" class="figlio">
             <h3>PROBLEMI</h3>
             <div id="btn">
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
-                <button>BINI</button>
+                <?php 
+                    $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
+
+                    $text = "SELECT assenza.id, assenza.idProf, giorno, ora, nome, cognome
+                             FROM assenza, ora, prof
+                             WHERE idOra=ora.id
+                             AND assenza.idProf = prof.id";
+                    
+                    $query= $pdo->prepare($text);
+                    $query->execute();
+
+                    while($row=$query->fetch()){
+                        echo "<button>".$row['nome']." ".$row['cognome']." (".$row['giorno']." ".$row['ora'].")</button>";
+                    }
+
+                    $text = "SELECT supplenza.id, supplenza.idProf, idAssenza
+                             FROM assenza, supplenza
+                             WHERE assenza.id=idAssenza";
+                    
+                    $query= $pdo->prepare($text);
+                    $query->execute();
+                    $row = $query->fetchAll();
+                ?>
             </div>
             <button id="auto">ASSEGNA</button> 
             <button id="salva">SALVA</button>
