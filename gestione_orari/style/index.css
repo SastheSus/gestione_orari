@@ -1,0 +1,385 @@
+*{
+  margin: 0;
+  padding: 0;
+  /*AGGIUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
+  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+body{
+  background-color: #a2beec;
+}
+header{
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+  background-color: #1d70f5;
+  color: rgb(255, 255, 255);
+  padding: 1em;
+  font-size: 1.1em;
+}
+/* The side navigation menu */
+#sidebar {
+  margin: 0;
+  padding: 0em;
+  width: 230px;
+  background-color: #f1f1f1;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow: auto;
+  display: none;
+}
+
+
+/* Sidebar links  MODIFICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
+#sidebar a {
+  display: block;
+  color: black;
+  padding-bottom: 1.3em ;
+  font-family: 'Titillium Web', sans-serif;
+  text-decoration: none;
+  font-size: 1.5em;
+  
+}
+#sidebar p{
+  margin-left: 8px;
+}
+.active p{
+  color: #1d70f5; 
+}
+#logout p{
+  color: red;
+}
+/* Links on mouse-over */
+#sidebar a:hover:not(.active) {
+  color: #1d70f5;
+}
+  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+    margin-left: 200px;
+    height: 1000px;
+}
+  /* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+}
+  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+}
+#butClose{
+  cursor: pointer;
+  border: none;
+  margin-top: 0.5em;
+  margin-left: 14em;
+  
+}
+#indietro{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 7em;
+  height: 5em;
+}
+#indietro p{
+  text-decoration-style: none;
+  color: black;
+  font-size: 20px;
+  margin-top: 0.8em;
+  margin-left: 0.3em;
+
+}
+#back{
+  cursor: pointer;
+  width: 2em;
+  margin-left: 1.5em;
+  margin-top: 1em
+}
+#butRefresh{
+  cursor: pointer;
+  color: rgb(77, 137, 59);
+  padding-bottom:1em ;
+  font-family: 'Titillium Web', sans-serif;
+  text-decoration: none;
+  font-size: 1.5em;
+  border: 0px;
+}
+#Apri{
+  border: none;
+  position: absolute;
+  background-color: transparent;
+  margin: 1em;
+}
+#Apri img{
+  width: 4em;
+}
+#Apri:hover{
+  cursor: pointer;
+
+}
+#menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 2em 2em 0 2em;
+  gap: 2em;
+  
+}
+#menuV{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 0em 2em 0 2em;
+  gap: 2em;
+  
+}
+
+#child1{
+  text-align: center;
+  width: 100%;
+  flex:3;
+
+}
+#child2{
+  text-align: center;
+  width: 100%;
+  flex:7;
+  
+}
+#child1 h2{
+  font-size: 30px;
+
+}#child2 h2{
+  font-size: 30px;
+}
+#barraRicerca{
+  background-color: azure;
+  margin-top: .5em;
+  width: 100%;
+  height: 2.5em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size:22px;
+}
+#invia{
+  border: solid blue;
+  border-radius: 8px;
+  background-color:#1d70f5;
+  color:#f1f1f1;
+  height: 2em;
+  width: 13%;
+  font-size: 18px;
+
+}
+/*forse sono troppi effetti, cancellare ho hover o active, scegliere insieme a Lucia appena c'è */
+#invia:hover{
+  background-color: #5d99fa;
+  border-color:#1d70f5;
+}
+#invia:active{
+  background-color: #a2beec;
+  border-color:#1d70f5;
+  color: black;
+}
+#ricerca{
+  border-bottom: .5px solid blue;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: azure;
+  width: 58%;
+  height: 30px;
+  font-size: 15px;
+}
+#lente{
+  width: 1.4em;
+  align-items: end;
+}
+
+#listaProf{
+  background-color: azure;
+  width: 100%; 
+  font-size: 20px;
+  overflow-y:scroll;
+  height: 27.5em;
+  text-align: left;
+}
+
+#orarioProf{
+  background-color: azure;
+  margin-top: .5em;
+  margin-bottom: 1em;
+  font-size: 20px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: auto;
+  justify-content: center;
+}
+#orarioProf h3{
+  padding-top: 1em;
+}
+#int_ora{
+  border-top: 0.5px solid;
+}
+.primo{
+  border-bottom: solid 0.5px black;
+  border-left: solid 0.5px black;
+}
+.giorno{
+  border-left: solid 0.5px black;
+  border-top: solid 0.5px black;
+}
+#g_ultimo{
+  border-right: solid 0.5px black;
+}
+.rows-0{
+  grid-row-start: 1;
+  border-bottom: solid 0.5px black;
+  border-left: solid 0.5px black;
+
+}
+.rows-1{
+  grid-row-start: 2;
+ 
+}
+.rows-2{
+  grid-row-start: 3;
+  
+}
+.rows-3{
+  grid-row-start: 4;
+ 
+}
+.rows-4{
+  grid-row-start: 5;
+ 
+}
+.rows-5{
+  grid-row-start: 6;
+ 
+}
+.rows-6{
+  grid-row-start: 7;
+ 
+}
+.rows-7{
+  grid-row-start: 8;
+  
+}
+.rows-8{
+  grid-row-start: 9;
+
+}
+.rows-9{
+  grid-row-start: 10;
+
+}
+.ora{
+  width: 100%;
+  height: 100%;
+  background-color: #a2beec;;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid black;
+}
+.prof{
+  display:inline-flex;
+  font-size: 90%;
+  margin: 12px;   
+  width: 20%;
+  padding: .5em;
+  height: 15%;
+  border-radius: 10px;
+  background-color: #1d70f5;
+  color: white;
+  text-align: center; 
+}
+.prof:hover{
+  background-color: #5d99fa;
+  border-color:#1d70f5;
+}
+.prof:active{
+  background-color: #a2beec;
+  border-color:#1d70f5;
+  color: black;
+}
+#centro{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+.prof > p{
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+#opzioni{
+  margin: 1.5em 1.5em 1em 1.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+#stampa{
+  cursor: pointer;
+  border: solid #2c7834;
+  border-radius: 8px;
+  background-color:rgb(64, 163, 34);
+  color:#f1f1f1;
+  height: 2.6em;
+  width: 7em;
+  font-size: 18px;
+}
+#stampa:hover{
+  cursor: pointer;
+  border: solid #123616;
+  border-radius: 8px;
+  background-color:rgb(35, 95, 16);
+  color:#f1f1f1;
+}
+#stampa:active{
+  cursor: pointer;
+  border: solid #436547;
+  border-radius: 8px;
+  background-color:rgb(108, 135, 99);
+  color:#f1f1f1;
+}
+#sett{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 0.5em;
+}
+#a{
+  cursor: pointer;
+  border: solid blue;
+  border-radius: 8px;
+  background-color:#1d70f5;
+  color:#f1f1f1;
+  height: 2.5em;
+  font-size: 18px;
+  width: 11em;
+}
+#sPrima{
+  cursor: pointer;
+  width: 1.5em;
+}
+#sDopo{
+  cursor: pointer;
+  width: 1.5em;
+}

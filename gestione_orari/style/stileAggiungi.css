@@ -1,0 +1,152 @@
+*{
+  margin: 0;
+  padding: 0;
+  /*AGGIUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
+  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+body{
+  background-color: #a2beec;
+
+}
+header{
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+  background-color: #1d70f5;
+  color: rgb(255, 255, 255);
+  padding: 1em;
+  font-size: 1.1em;
+}
+#sidebar {
+  margin: 0;
+  padding: 0em;
+  width: 230px;
+  background-color: #f1f1f1;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  overflow: auto;
+  display: none;
+}
+
+
+/* Sidebar links  MODIFICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
+#sidebar a {
+  display: block;
+  color: black;
+  padding-bottom: 1.3em ;
+  font-family: 'Titillium Web', sans-serif;
+  text-decoration: none;
+  font-size: 1.5em;
+  
+}
+#sidebar p{
+  margin-left: 8px;
+}
+.active p{
+  color: #1d70f5; 
+}
+#logout p{
+  color: red;
+}
+/* Links on mouse-over */
+#sidebar a:hover:not(.active) {
+  color: #1d70f5;
+}
+  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+    margin-left: 200px;
+    height: 1000px;
+}
+  
+  /* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+}
+  
+  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+}
+#butClose{
+  cursor: pointer;
+  border: none;
+  margin-top: 0.5em;
+  margin-left: 14em;
+  
+}
+#butRefresh{
+  color: rgb(77, 137, 59);
+  padding-bottom:1em ;
+  font-family: 'Titillium Web', sans-serif;
+  text-decoration: none;
+  font-size: 1.5em;
+  border: 0px;
+  margin-left: 8px;
+}
+#Apri{
+  border: none;
+  position: absolute;
+  background-color: transparent;
+  margin: 1em;
+}
+#Apri img{
+  width: 4em;
+}
+#Apri:hover{
+  cursor: pointer;
+
+}
+#menu{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 5em 2em;
+  gap: 5em;
+  justify-content: center;
+  align-items: center;
+  
+}
+form{
+  background-color: azure;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  height: 8.5em;
+  width: 21em;
+  padding: 2em;
+  
+}
+label{
+  font-style: bold;
+  font-size: 1.7em;
+}
+.caricaFile{
+  border: solid blue;
+  border-radius: 8px;
+  background-color:#1d70f5;
+  color:#f1f1f1;
+  width: 50%;
+  font-size: 18px;
+  
+}
+.caricaFile:hover{
+  background-color: #5d99fa;
+  border-color:#1d70f5;
+}
+.caricaFile:active{
+  background-color: #a2beec;
+  border-color:#1d70f5;
+  color: black;
+}
+
