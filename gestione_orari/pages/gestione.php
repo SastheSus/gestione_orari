@@ -53,16 +53,27 @@
                     $query->execute();
 
                     while($row=$query->fetch()){
-                        echo "<button onclick='pathfinder('".$row[0]."')'>".$row['nome']." ".$row['cognome']." (".$row['giorno']." ".$row['ora'].")</button>";
+                        echo "<button ".classe($row[0],$pdo)." onclick='pathfinder('".$row[0]."')'>".$row['nome']." ".$row['cognome']." (".$row['giorno']." ".$row['ora'].")</button>";
                     }
+                    $pdo = null;
 
-                    $text = "SELECT supplenza.id, supplenza.idProf, idAssenza
+                    function classe($idAssenza,$pdo){
+                        $stile = "id='profBtn'";
+                        $text = "SELECT supplenza.id, supplenza.idProf, idAssenza
                              FROM assenza, supplenza
-                             WHERE assenza.id=idAssenza";
+                             WHERE idAssenza = ?
+                             AND assenza.id = idAssenza";
+
+                        $query2= $pdo->prepare($text);
+                        $query2->execute([$idAssenza]);
+
+                        while($row=$query2->fetch()){
+                            $stile = "id='ok'";
+                        }
+                        return $stile;
+                    }
                     
-                    $query= $pdo->prepare($text);
-                    $query->execute();
-                    $row = $query->fetchAll();
+
                 ?>
             </div>
             <button id="auto">ASSEGNA</button> 

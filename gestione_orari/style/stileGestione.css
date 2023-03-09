@@ -118,8 +118,19 @@ div.content {
   font-size: 30px;
   margin-bottom: .5em;
 }
-#btn > button{
-  background-color: #1d70f5;
+#profBtn{
+  background-color: red;
+  color: #FFFFFF;
+  width: 70px;
+  margin: 0.5px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  height: 8vh;
+  border-radius: 8px;
+}
+#ok{
+  background-color: green;
   color: #FFFFFF;
   width: 70px;
   margin: 0.5px;
