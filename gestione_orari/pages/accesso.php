@@ -11,7 +11,7 @@
         <h1><b>I.I.S ITALO CALVINO</b></h1>
     </header>
 <div class="container">
-  <form action="/action_page.php">
+  <form action="listaProf.php">
     <h3>ACCEDI</h3>
     <div class="row">
     <div class="col-25">

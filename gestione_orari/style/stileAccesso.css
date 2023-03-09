@@ -39,7 +39,7 @@ label {
 
 /*forse sono troppi effetti, cancellare ho hover o active, scegliere insieme a Lucia appena c'è */
 input[type=submit] {
-  padding: 6px 15px;
+  width: 60px;
   cursor: pointer;
   float: right;
   border: solid blue;

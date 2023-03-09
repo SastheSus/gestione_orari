@@ -56,7 +56,9 @@
                         while($riga = $query->fetch()){
                             if($i!=0){
                                 $n="'".$riga[0]."'";
-                                echo "<button id=".$riga[0]." type='submit'  name='id' value=".$riga[0]." class='prof'>".$riga[0]."</button>";
+                                if($riga[0]!="NONE"){
+                                    echo "<button id=".$riga[0]." type='submit'  name='id' value=".$riga[0]." class='prof'>".$riga[0]."</button>";
+                                }
                             }
                             $i++;
                         }
