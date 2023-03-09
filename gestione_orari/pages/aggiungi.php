@@ -37,28 +37,28 @@
     <div id="menu">
             <div id="child1">
                 <form>
-                    <label><b>Aggiungi elenco docenti:</b></label>
+                    <label><b>Elenco professori:</b></label>
                     <input type="file" name="file1" id="file1">
                     <input type="submit" value="Carica"  class="caricaFile">
                 </form>
             </div>
             <div id="child2">
                 <form>
-                    <label><b>Aggiungi elenco classi:</b></label>
+                    <label><b>Elenco sezioni:</b></label>
                     <input type="file" name="file2" id="file2">
                     <input type="submit" value="Carica" class="caricaFile">
                 </form>
             </div>
             <div id="child3">
                 <form>
-                    <label><b>Aggiungi orario docenti:</b></label>
+                    <label><b>Orario professori:</b></label>
                     <input type="file" name="file3" id="file3">
                     <input type="submit" value="Carica"  class="caricaFile">
                 </form>
             </div>
             <div id="child4">
                 <form>
-                    <label><b>Aggiungi orario classi:</b></label>
+                    <label><b>Orario sezioni:</b></label>
                     <input type="file" name="file4" id="file4">
                     <input type="submit" value="Carica"  class="caricaFile">
                 </form>

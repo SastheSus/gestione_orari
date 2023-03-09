@@ -15,10 +15,11 @@
     <h3>ACCEDI</h3>
     <div class="row">
     <div class="col-25">
-      <label for="fname">Nome:</label>
+      <label for="fname">Username:</label>
     </div>
     <div class="col-75">
-      <input type="text" id="name" name="name" placeholder=" Mario Rossi">
+      <input type="text" id="email" name="name" placeholder="Email">
+      <p id="errorEmail" class="errorText"></p>
     </div>
   </div>
   <div class="row">
@@ -26,7 +27,8 @@
       <label for="lname">Password:</label>
     </div>
     <div class="col-75">
-      <input type="password" id="password" name="password" placeholder="*****">    
+      <input type="password" id="password" name="password" placeholder="*****">
+      <p id="errorPassword" class="errorText"></p>   
     </div>
   </div>
   <div class="row">
