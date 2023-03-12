@@ -9,16 +9,16 @@ function tryLog(){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         var result = this.responseText;
-        window.alert(result)
+        window.alert(result);
         switch (result){
             case "NE":
-            document.getElementById("email").style.border= "1px solid red";
-            document.getElementById("errorEmail").innerHTML="Email inesistente";
+                document.getElementById("email").style.border= "1px solid red";
+                document.getElementById("errorEmail").innerHTML="Email inesistente";
             return false;
             break;
             case "NP":
-            document.getElementById("password").style.border= "1px solid red";
-            document.getElementById("errorPassword").innerHTML="Password errata";
+                document.getElementById("password").style.border= "1px solid red";
+                document.getElementById("errorPassword").innerHTML="Password errata";
             return false;
             break
         }
@@ -26,12 +26,13 @@ function tryLog(){
             window.alert(emptyParameter[0])
             return false
         }
-        else if(result=="C"){
+        else{
             return true;
         }
     }
     xhttp.open("GET", "login.php?email="+email+"&password="+password);
     xhttp.send();
+    return false;
 }
 
 function backBlack(){

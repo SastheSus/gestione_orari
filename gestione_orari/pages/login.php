@@ -3,12 +3,13 @@
     $password= $_REQUEST["password"];
     $hint="";
     try{
-        $pdo = new PDO("mysql:host=localhost; dbname=blogdb", "root", "");
-        $query = $pdo->prepare("SELECT * FROM utente WHERE email=?");
+        $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
+        $query = $pdo->prepare("SELECT * FROM prof WHERE email=?");
         $query -> execute([$email]);
         
         while($row = $query->fetch()){
-            if($row[1]==$password){
+            if($row[2]==$password){
+                $hint= "Success";
                 $_SESSION["id"]=$email;
                 $_SESSION["nome"]=$row[0];
             }
