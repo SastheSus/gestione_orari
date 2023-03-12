@@ -9,6 +9,10 @@
       $query->execute();
       $query= $pdo->prepare("DELETE FROM profinsegnaclasse ");
       $query->execute();
+      $query= $pdo->prepare("DELETE FROM assenza");
+      $query->execute();
+      $query= $pdo->prepare("DELETE FROM supplenza");
+      $query->execute();
       $query= $pdo->prepare("DELETE FROM prof ");
       $query->execute();
       $query= $pdo->prepare("DELETE FROM ora ");
@@ -44,7 +48,6 @@
       while(!feof($professoriFile)) {
         $riga= fgets($professoriFile);
         $riga = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $riga);
-        $riga = preg_replace('/\./', '', $riga);
         $dati= explode(",", $riga);
         $virgolette=explode("\"",$riga);
 
@@ -61,6 +64,7 @@
           if(sizeof($virgolette)>2){ 
             if($piuClassi && sizeof($virgolette)==5){
               $materie=explode(",", $virgolette[3]);
+              $materie = preg_replace('/\./', '', $materie);
               for($j=0;$j<sizeof($materie);$j++){
                 $materie[$j] = trim($materie[$j]);
                 $sql = "INSERT INTO profhamateria (idProf, idMateria) VALUES (?,?)";
@@ -70,6 +74,7 @@
             }
             else if(!$piuClassi){
               $materie=explode(",", $virgolette[1]);
+              $materie = preg_replace('/\./', '', $materie);
               for($j=0;$j<sizeof($materie);$j++){
                 $materie[$j] = trim($materie[$j]);
                 $sql = "INSERT INTO profhamateria (idProf, idMateria) VALUES (?,?)";
@@ -81,9 +86,10 @@
           }
           else{
             if(!empty($dati[40])){
+              $bardotti= preg_replace('/\./', '', $dati[40]);
               $sql = "INSERT INTO profhamateria (idProf, idMateria) VALUES (?,?)";
               $stmt= $pdo->prepare($sql);
-              $stmt->execute([$i,$dati[40]]);
+              $stmt->execute([$i,$bardotti]);
             }
             else{
             }

@@ -1,7 +1,7 @@
 function tryLog(){
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    backBlackLog()
+    backBlack()
     var emptyParameter= emptyIn(email, password);
     for(i=0;i<emptyParameter.length;i++){
         document.getElementById(emptyParameter[i]).style.border= "1px solid red";
@@ -9,6 +9,7 @@ function tryLog(){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         var result = this.responseText;
+        window.alert(result)
         switch (result){
             case "NE":
             document.getElementById("email").style.border= "1px solid red";
@@ -26,20 +27,11 @@ function tryLog(){
             return false
         }
         else if(result=="C"){
-            const xhttp = new XMLHttpRequest();
-            xhttp.onload = function() {
-            result = this.responseText;
-            }
-            xhttp.open("GET", "login.php?email="+email);
-            xhttp.send();
-            window.location.reload();
             return true;
         }
     }
-    xhttp.open("GET", "checkLogin.php?email="+email+"&password="+password);
+    xhttp.open("GET", "login.php?email="+email+"&password="+password);
     xhttp.send();
-    sleepFor(500);
-    return false;
 }
 
 function backBlack(){
