@@ -9,7 +9,6 @@ function tryLog(){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         var result = this.responseText;
-        window.alert(result);
         switch (result){
             case "NE":
                 document.getElementById("email").style.border= "1px solid red";
@@ -27,12 +26,14 @@ function tryLog(){
             return false
         }
         else{
+            console.log("access")
             return true;
         }
     }
     xhttp.open("GET", "login.php?email="+email+"&password="+password);
     xhttp.send();
-    return false;
+    sleepFor(1000);
+    return true;
 }
 
 function backBlack(){
@@ -47,10 +48,10 @@ function emptyIn(...elements){
     var campivuoti=[];
     var counter=0;
     for(let element of elements){
-      if(element==""){
-          index.push(counter);
-      }
-      counter++;
+        if(element==""){
+            index.push(counter);
+        }
+        counter++;
     }
     for(i=0;i<index.length;i++){
     switch (index[i]){
@@ -62,6 +63,23 @@ function emptyIn(...elements){
         break;
     }
     }
-  
+
     return campivuoti;
-  }
+}
+
+function sleepFor(sleepDuration){
+    var now = new Date().getTime();
+    while(new Date().getTime() < now + sleepDuration){ 
+        /* Do nothing */ 
+    }
+}
+
+function logOut(){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        result = this.responseText;  
+    }
+    xhttp.open("GET", "logout.php");
+    xhttp.send();
+    return true
+}

@@ -19,6 +19,7 @@
             document.getElementById("Apri").style.display="";            
         }
     </script>
+    <script src="../script/login.js"></script>
 </head>
 <body>
 <button onclick="Apri()" id="Apri"><img src="../images/hamMenu.png" alt=""></button>
@@ -31,7 +32,7 @@
         <a href="listaSezioni.php"><p>SEZIONI</p></a>
         <a href="gestione.php"><p>GESTIONE ORARIO</p></a>
         <a class="active" href="aggiungi.php"><p>AGGIUNGI FILE</p></a>
-        <a href="accesso.php" id="logout"><p>LOG OUT</p></a>
+        <a href="accesso.php" onclick="logOut()" id="logout"><p>LOG OUT</p></a>
         <button onclick="refresh()" id="butRefresh">REFRESH DB</button>
     </div>
     <div id="menu">

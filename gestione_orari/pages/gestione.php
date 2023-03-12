@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@500&display=swap" rel="stylesheet">
     <script src="../script/script.js"></script>
+    <script src="../script/login.js"></script>
     <script>
         function Apri(){
             document.getElementById("sidebar").style.display="block";
@@ -34,7 +35,7 @@
         <a href="listaSezioni.php"><p>SEZIONI</p></a>
         <a class="active" href="gestione.php"><p>GESTIONE ORARIO</p></a>
         <a href="aggiungi.php"><p>AGGIUNGI FILE</p></a>
-        <a href="accesso.php" id="logout"><p>LOG OUT</p></a>
+        <a href="accesso.php" onclick="logOut()" id="logout"><p>LOG OUT</p></a>
         <button onclick="refresh()" id="butRefresh">REFRESH DB</button>
     </div>
     <div id="contenitore">

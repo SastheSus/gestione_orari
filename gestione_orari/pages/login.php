@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $email= $_REQUEST["email"];
     $password= $_REQUEST["password"];
     $hint="";
@@ -10,8 +11,9 @@
         while($row = $query->fetch()){
             if($row[2]==$password){
                 $hint= "Success";
-                $_SESSION["id"]=$email;
-                $_SESSION["nome"]=$row[0];
+                $_SESSION["id"]=$row[0];
+                $_SESSION["nome"]=$row[5];
+                $_SESSION["cognome"]=$row[4];
             }
             else{
                 $hint= "NP";
