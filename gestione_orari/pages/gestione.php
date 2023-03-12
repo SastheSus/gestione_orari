@@ -42,8 +42,9 @@
             <h3>PROBLEMI</h3>
             <div id="btn">
                 <?php 
+                    $classe = "";
                     $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
-
+                    //trova assenza
                     $text = "SELECT assenza.id, assenza.idProf, giorno, ora, nome, cognome
                              FROM assenza, ora, prof
                              WHERE idOra=ora.id
@@ -53,9 +54,10 @@
                     $query->execute();
 
                     while($row=$query->fetch()){
-                        echo "<button ".classe($row[0],$pdo)." onclick='pathfinder('".$row[0]."')'>".$row['nome']." ".$row['cognome']." (".$row['giorno']." ".$row['ora'].")</button>";
+                        $t = 'onclick="pathfinder('.$row[0].')"';
+                        $classe = classe($row[0],$pdo);
+                        echo "<button ".$classe."".$t." >".$row['nome']." ".$row['cognome']." (".$row['giorno']." ".$row['ora'].")</button>";
                     }
-                    $pdo = null;
 
                     function classe($idAssenza,$pdo){
                         $stile = "id='profBtn'";
@@ -67,7 +69,7 @@
                         $query2= $pdo->prepare($text);
                         $query2->execute([$idAssenza]);
 
-                        while($row=$query2->fetch()){
+                        if($row=$query2->fetch()){
                             $stile = "id='ok'";
                         }
                         return $stile;
@@ -81,13 +83,31 @@
             
         </div>
         <div id="lista" class="figlio">
-           <h3>PROFESSORI</h3>
-            <li>List item 1</li>
-            <li>List item 2</li>
-            <li>List item 3</li>
-            <li>List item 4</li>
-            <li>List item 5</li>
+            <h3>PROFESSORI</h3>
+            <ul id="listaContainer"></ul>
+            <?php /*
+            if($row != null){
+                $row2 = "";
+                $text = "SELECT profhaora.idProf, prof.nome, prof.cognome, prof.oreSup
+                        FROM ora, prof, profhaora, supplenza
+                        WHERE idProf != ?
+                        AND profhaora.idProf=prof.id
+                        AND profhaora.idOra=ora.id
+                        AND ora.idMateria LIKE ?
+                        AND ora.giorno = ?
+                        AND ora.ora = ?
+                        AND ? NOT IN (SELECT idAssenza FROM supplenza)
+                        ORDER BY oreSup ASC";
+
+                $query2= $pdo->prepare($text);
+                $query2->execute([$row['assenza.idProf'],'DISPOSIZIONE',$row['giorno'],$row['ora'],$row['idAssenza']]);
+                $row2 = $query2->fetchAll();
+                
+                echo $row2 === "" ? "none" : $row2;
+            }
             
+            $pdo = null;
+            */?>
         </div>
     </div>
     

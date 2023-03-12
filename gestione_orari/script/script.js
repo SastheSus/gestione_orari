@@ -43,15 +43,26 @@ function controlloAss(id){
 }
 
 function pathfinder(id){
-    week = document.getElementById("a").value;
-    var father= document.getElementById("orarioProf").querySelectorAll(".ora");
-    for(i=0;i<father.length;i++){
-        father[i].style.backgroundColor="#a2beec";
-    }
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
-        alert("Success"+this.responseText);
-        resp = this.responseText;
+        const list = document.getElementById("listaContainer");
+        while (list.hasChildNodes()) {
+            list.removeChild(list.firstChild);
+        }
+        alert("Success"+this.response);
+        resp =(this.response).split(",");
+        for(i=0;i<resp.length;i++){
+            // Create an "li" node:
+            const node = document.createElement("li");
+            // Create a text node:
+            const textnode = document.createTextNode(resp[i]);
+
+            // Append the text node to the "li" node:
+            node.appendChild(textnode);
+
+            // Append the "li" node to the list:
+            document.getElementById("listaContainer").appendChild(node);
+        }
     }
     xhttp.open("GET", "../pages/pathfinder.php?id="+id);
     xhttp.send();
