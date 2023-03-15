@@ -1,6 +1,6 @@
 *{
-  margin: auto;
-  padding: auto;
+  margin: 0;
+  padding: 0;
   /*AGGIUNTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
   font-family: 'Lato', sans-serif;
   font-family: 'Open Sans', sans-serif;
@@ -9,12 +9,13 @@ body{
   background-color: #a2beec;
 }
 header{
-    text-align: center;
-    font-family: 'Titillium Web', sans-serif;
-    background-color: #1d70f5;
-    color: white;
-    padding: 1em;
-    font-size: 1.1em;
+  font-family: 'Titillium Web', sans-serif;
+  background-color: #1d70f5;
+  color: rgb(255, 255, 255);
+  padding: 1em;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
 }
 /* The side navigation menu */
 #sidebar {
@@ -94,16 +95,14 @@ div.content {
 }
 #Apri{
   border: none;
-  position: absolute;
   background-color: transparent;
-  margin: 1em;
+  width: 10%;
+  display: flex;
+  align-items: center;
 }
 #Apri img{
-  width: 4em;
-}
-#Apri:hover{
+  width: 60px;
   cursor: pointer;
-
 }
 #contenitore{
   display: flex;
@@ -228,4 +227,13 @@ li:active {
   background-color: rgb(196, 119, 48);
   color: #FFFFFF;
   border-color: #000000 ;
+}
+
+#nomeText{
+  width: 10%;
+}
+
+h1{
+  width: 80%;
+  text-align: center;
 }
