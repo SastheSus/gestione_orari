@@ -12,11 +12,19 @@ $text = "SELECT idProf, giorno, ora
 
 $query= $pdo->prepare($text);
 $query->execute([$id]);
-$row = $query->fetchAll();
+$ass = $query->fetchAll();
 
-if($row != null){
+$text = "SELECT idProf
+         FROM supplenza
+         WHERE supplenza.idAssenza = ?";
+
+$query= $pdo->prepare($text);
+$query->execute([$id]);
+$sup = $query->fetchAll();
+
+if($ass != null){
     $result = "";
-    $row2 = "";
+    $prof = "";
     $text = "SELECT profhaora.idProf, prof.nome, prof.cognome, prof.oreSup
             FROM ora, prof, profhaora
             WHERE idProf != ?
@@ -27,17 +35,16 @@ if($row != null){
             AND ora.ora = ?
             ORDER BY oreSup ASC";
     $query= $pdo->prepare($text);
-    $query->execute([$row[0]['idProf'],'DISPOSIZIONE',$row[0]['giorno'],$row[0]['ora']]);
-    while($row2=$query->fetch()){
-        $text = "SELECT supplenza.idProf
-        FROM assenza, supplenza
-        WHERE assenza.id = ?
-        AND assenza.id = supplenza.idAssenza";
-        $query2= $pdo->prepare($text);
-        $query2->execute([$id]);
-        $row3 = $query2->fetchAll();
-        if($row2['idProf']!="")
-        $result .= $row2['idProf'].",";
+    $query->execute([$ass[0]['idProf'],'DISPOSIZIONE',$ass[0]['giorno'],$ass[0]['ora']]);
+    while($prof=$query->fetch()){
+        if($prof['idProf']!=""){
+            if($sup!=null && $sup[0]['idProf']==$prof['idProf']){
+                $result .= $prof['idProf']."*,";
+            }
+            else{
+                $result .= $prof['idProf'].",";
+            }
+        }
     }
 
     echo $result === "" ? "NONE" : rtrim($result, ",");

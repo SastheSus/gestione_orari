@@ -52,15 +52,21 @@ function pathfinder(id){
         alert("Success"+this.response);
         resp =(this.response).split(",");
         for(i=0;i<resp.length;i++){
-            // Create an "li" node:
+
             const node = document.createElement("li");
-            // Create a text node:
-            const textnode = document.createTextNode(resp[i]);
+
             node.setAttribute("onclick","sostituisci("+resp[i]+","+id+")")
-            // Append the text node to the "li" node:
+
+            if(resp[i].includes("*")){
+                node.setAttribute("class","assigned")
+                resp[i]=resp[i].replace("*", "")
+            }
+
+            node.setAttribute("id","prof"+[i])
+            const textnode = document.createTextNode(resp[i]);
+
             node.appendChild(textnode);
 
-            // Append the "li" node to the list:
             document.getElementById("listaContainer").appendChild(node);
         }
     }
@@ -71,7 +77,7 @@ function pathfinder(id){
 function sostituisci(resp, id){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
-        alert("eureka")
+        location.reload();
     }
     xhttp.open("GET", "../pages/pathresolver.php?id="+id+"&idProf="+resp);
     xhttp.send();

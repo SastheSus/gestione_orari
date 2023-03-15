@@ -243,24 +243,22 @@
         echo "Impossibile connettersi al server di database. ".$e;
         exit();
     }
-    
 
-    function finds($str1, $str2){
-      $str1=str_split($str1);
-      $str2=str_split($str2);
-      $equals="";
-      for($a=0;$a<sizeof($str1);$a++){
-        for($b=0;$b<sizeof($str2);$b++){
-          if($str1[$a]==$str2[$b]){
-            $equals.=$str1[$a];
-            break;
-          }
-        }
+    function dayWeek($day){
+      switch ($day) {
+        case "lunedi":
+          return 1;
+          break;
+        case "martedi":
+          return 2;
+          break;
+        case "mercoledi":
+          return 3;
+          break;
+        default:
+          echo "Your favorite color is neither red, blue, nor green!";
       }
-      return $equals;
     }
-    
-  
 
     $pdo=null;
     ?>

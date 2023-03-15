@@ -4,6 +4,10 @@ $idProf= $_REQUEST["idProf"];   //idProf
 try{
 $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
 
+$text = "DELETE FROM supplenza WHERE idAssenza = ?";
+$query= $pdo->prepare($text);
+$query->execute([$id]);
+
 $text = "INSERT INTO supplenza(idProf, idAssenza) VALUES (?, ?)";
 
 $query= $pdo->prepare($text);

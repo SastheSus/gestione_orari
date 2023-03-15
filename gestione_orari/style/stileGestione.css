@@ -29,6 +29,9 @@ header{
   display: none;
 }
 
+.assigned{
+  background-color: green;
+}
 
 /* Sidebar links  MODIFICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
 #sidebar a {

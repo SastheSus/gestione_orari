@@ -41,7 +41,7 @@ create table assenza(
 create table supplenza(
     id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
     idProf integer,
-    idAssenza integer,
+    idAssenza integer UNIQUE,
     FOREIGN KEY (idProf) REFERENCES prof (id),
     FOREIGN KEY (idAssenza) REFERENCES assenza (id)
 );
