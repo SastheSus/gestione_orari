@@ -23,12 +23,13 @@
     </script>
 </head>
 <body>
-<button onclick="Apri()" id="Apri"><img src="../images/hamMenu.png" alt=""></button>
     <header>
+    <button  id="Apri"><img onclick="Apri()" src="../images/hamMenu.png" alt=""></button>
         <h1><b>I.I.S. ITALO CALVINO</b></h1>
         <?php
+            session_start();
             if(isset($_SESSION['nome'])){
-                echo "<h1>".$_SESSION['cognome']." ".$_SESSION['nome']."</h1>";
+                echo "<h3 id='nomeText'>".$_SESSION['cognome']." ".$_SESSION['nome']."</h3>";
             }
         ?>
     </header>

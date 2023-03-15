@@ -22,9 +22,15 @@
     <script src="../script/login.js"></script>
 </head>
 <body>
-<button onclick="Apri()" id="Apri"><img src="../images/hamMenu.png" alt=""></button>
     <header>
+        <button id="Apri"><img src="../images/hamMenu.png" alt="" onclick="Apri()"></button>
         <h1><b>I.I.S. ITALO CALVINO</b></h1>
+        <?php
+            session_start();
+            if(isset($_SESSION['nome'])){
+                echo "<h3 id='nomeText'>".$_SESSION['cognome']." ".$_SESSION['nome']."</h3>";
+            }
+        ?>
     </header>
     <div id="sidebar">
         <button onclick="chiudi()" id="butClose"><img src="../images/chiudi.png" alt=""></button>
