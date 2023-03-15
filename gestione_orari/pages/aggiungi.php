@@ -12,11 +12,9 @@
     <script>
         function Apri(){
             document.getElementById("sidebar").style.display="block";
-            document.getElementById("Apri").style.display="none";
         }
         function chiudi(){
-            document.getElementById("sidebar").style.display="none";
-            document.getElementById("Apri").style.display="";            
+            document.getElementById("sidebar").style.display="none";         
         }
     </script>
     <script src="../script/login.js"></script>
