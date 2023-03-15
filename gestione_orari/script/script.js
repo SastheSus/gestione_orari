@@ -1,9 +1,7 @@
 function refresh() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
-        alert("Success")
         result = this.responseText;
-        console.log(result);
     }
     xhttp.open("GET", "../pages/parser.php");
     xhttp.send();  
@@ -30,13 +28,10 @@ function controlloAss(id){
     }
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
-        alert("Success"+this.responseText);
         resp = this.responseText;
         resp = resp.split(",");
         for(i=0;i<resp.length;i++){
-            alert(resp[i]);
             document.getElementById(resp[i]).style.backgroundColor="red";
-            alert(resp[i]);
         }
     }
     xhttp.open("GET", "../pages/controlloAss.php?id="+id+"&week="+week);
@@ -50,7 +45,6 @@ function pathfinder(id){
         while (list.hasChildNodes()) {
             list.removeChild(list.firstChild);
         }
-        alert("Success"+this.response);
         resp =(this.response).split(",");
         for(i=0;i<resp.length;i++){
 

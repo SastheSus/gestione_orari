@@ -14,12 +14,10 @@
     <script>
         function Apri(){
             document.getElementById("sidebar").style.display="block";
-            document.getElementById("Apri").style.display="none";
             document.getElementById("contenitore").style.left="200px";
         }
         function chiudi(){
             document.getElementById("sidebar").style.display="none";
-            document.getElementById("Apri").style.display=""; 
             document.getElementById("contenitore").style.left="0";           
         }
     </script>
