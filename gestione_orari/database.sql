@@ -20,7 +20,7 @@ create table ora(
     id integer PRIMARY KEY,
     luogo varchar(255),
     durata integer,
-    giorno varchar(255),
+    giorno integer,
     ora integer,
     idMateria varchar(255),
     idClasse varchar(255),
@@ -33,7 +33,8 @@ create table assenza(
     motivo varchar(255),
     idProf integer,
     idOra integer,
-    assData varchar(255),
+    anno integer,
+    settimana integer,
     FOREIGN KEY (idProf) REFERENCES prof(id),
     FOREIGN KEY (idOra) REFERENCES ora(id)
 );

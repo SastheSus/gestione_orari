@@ -170,7 +170,7 @@
             do{
               $sql = "INSERT INTO ora (id, luogo, durata, giorno, ora, idMateria, idClasse) VALUES (?,?,?,?,?,?,?)";
               $stmt= $pdo->prepare($sql); 
-              $stmt->execute([$z, $place,1, $pino[7], $ora, $dati[4] , $class]);
+              $stmt->execute([$z, $place,1, dayWeek($pino[7]), $ora, $dati[4] , $class]);
 
               for($y=0;$y<sizeof($listanomi);$y++){
                 $variabile= trim($listanomi[$y]);
@@ -215,7 +215,7 @@
             do{
               $sql = "INSERT INTO ora (id, luogo, durata, giorno, ora, idMateria, idClasse) VALUES (?,?,?,?,?,?,?)";
               $stmt= $pdo->prepare($sql); 
-              $stmt->execute([$z, $place, 1, $dati[13], $ora, $dati[4] , $class]);
+              $stmt->execute([$z, $place, 1, dayWeek($dati[13]), $ora, $dati[4] , $class]);
 
               
               $sql = "INSERT INTO profhaora (idProf, idOra) VALUES (?,?)";
@@ -255,8 +255,12 @@
         case "mercoledi":
           return 3;
           break;
-        default:
-          echo "Your favorite color is neither red, blue, nor green!";
+        case "giovedi":
+          return 4;
+          break;
+        case "venerdi":
+          return 5;
+          break;
       }
     }
 
