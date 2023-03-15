@@ -13,6 +13,7 @@ function assente(d,h,id,m,idH,idDiv) {
     alert(d+' '+h+' '+id+' '+m)
     xhttp.onload = function() {
         result = this.responseText;
+        alert(result)
         document.getElementById(idDiv).style.backgroundColor="red";
     }
     xhttp.open("GET", "../pages/sostituzioni.php?d="+d+"&h="+h+"&id="+id+"&m="+m+"&idH="+idH+"&week="+week);

@@ -60,6 +60,7 @@
                 $query->execute([$prof]);
                 $riga=$query->fetch();
                 echo "<h2>".$riga[0]."&nbsp 	&nbsp".$riga[1]."</h2>";
+                $pdo = null;
             ?>
             <div id="orarioProf">
                 <h3 class="primo" id="int_ora">Ora</h3>

@@ -53,10 +53,13 @@
                     $text = "SELECT assenza.id, assenza.idProf, giorno, ora, nome, cognome
                              FROM assenza, ora, prof
                              WHERE idOra=ora.id
-                             AND assenza.idProf = prof.id";
+                             AND assenza.idProf = prof.id
+                             AND giorno >= ?
+                             AND anno >= ?
+                             AND settimana >= ?";
                     
                     $query= $pdo->prepare($text);
-                    $query->execute();
+                    $query->execute([intval(date('N')),intval(date('Y')),intval(date('W'))]);
 
                     while($row=$query->fetch()){
                         $t = 'onclick="pathfinder('.$row[0].')"';
@@ -90,29 +93,6 @@
         <div id="lista" class="figlio">
             <h3>PROFESSORI</h3>
             <ul id="listaContainer"></ul>
-            <?php /*
-            if($row != null){
-                $row2 = "";
-                $text = "SELECT profhaora.idProf, prof.nome, prof.cognome, prof.oreSup
-                        FROM ora, prof, profhaora, supplenza
-                        WHERE idProf != ?
-                        AND profhaora.idProf=prof.id
-                        AND profhaora.idOra=ora.id
-                        AND ora.idMateria LIKE ?
-                        AND ora.giorno = ?
-                        AND ora.ora = ?
-                        AND ? NOT IN (SELECT idAssenza FROM supplenza)
-                        ORDER BY oreSup ASC";
-
-                $query2= $pdo->prepare($text);
-                $query2->execute([$row['assenza.idProf'],'DISPOSIZIONE',$row['giorno'],$row['ora'],$row['idAssenza']]);
-                $row2 = $query2->fetchAll();
-                
-                echo $row2 === "" ? "none" : $row2;
-            }
-            
-            $pdo = null;
-            */?>
         </div>
     </div>
     

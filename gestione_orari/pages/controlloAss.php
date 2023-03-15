@@ -1,15 +1,14 @@
 <?php
 
 $id= $_REQUEST["id"];   //idProf
-$week= $_REQUEST["week"]; //settimana
+$week= $_REQUEST["week"]; //anno e settimana
+$week = explode("-W",$week);
 
 $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
-$query = $pdo->prepare("SELECT * FROM assenza WHERE idProf=? AND assData=?");
-$query->execute([$id,$week]);
+$query = $pdo->prepare("SELECT * FROM assenza WHERE idProf=? AND anno=? AND settimana=?");
+$query->execute([$id,$week[0],$week[1]]);
 
 while($riga = $query->fetch()){
-    //$query = $pdo->prepare("SELECT * FROM ora WHERE idProf=? AND assData=?");
-    //$query->execute([$id,$week]);
     echo $riga[3].",";
 }
 
