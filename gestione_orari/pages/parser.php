@@ -9,9 +9,9 @@
       $query->execute();
       $query= $pdo->prepare("DELETE FROM profinsegnaclasse ");
       $query->execute();
-      $query= $pdo->prepare("DELETE FROM assenza");
-      $query->execute();
       $query= $pdo->prepare("DELETE FROM supplenza");
+      $query->execute();
+      $query= $pdo->prepare("DELETE FROM assenza");
       $query->execute();
       $query= $pdo->prepare("DELETE FROM prof ");
       $query->execute();

@@ -56,7 +56,7 @@ function pathfinder(id){
             const node = document.createElement("li");
             // Create a text node:
             const textnode = document.createTextNode(resp[i]);
-
+            node.setAttribute("onclick","sostituisci("+resp[i]+","+id+")")
             // Append the text node to the "li" node:
             node.appendChild(textnode);
 
@@ -65,5 +65,14 @@ function pathfinder(id){
         }
     }
     xhttp.open("GET", "../pages/pathfinder.php?id="+id);
+    xhttp.send();
+}
+
+function sostituisci(resp, id){
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        alert("eureka")
+    }
+    xhttp.open("GET", "../pages/pathresolver.php?id="+id+"&idProf="+resp);
     xhttp.send();
 }
