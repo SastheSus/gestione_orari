@@ -9,12 +9,12 @@
 </head>
 <body>
     <header>
-        <h1><b>I.I.S ITALO CALVINO</b></h1>
+        <h1><b>I.I.S. ITALO CALVINO</b></h1>
     </header>
 <div class="container">
   <form action="listaProf.php" >
     <h3>ACCEDI</h3>
-    <div class="row">
+    <div class="row" id="acc">
     <div class="col-25">
       <label for="fname">Username:</label>
     </div>
@@ -23,13 +23,31 @@
       <p id="errorEmail" class="errorText"></p>
     </div>
   </div>
-  <div class="row">
+  <div class="row" id="acc2">
     <div class="col-25">
       <label for="lname">Password:</label>
     </div>
     <div class="col-75">
       <input type="password" id="password" name="password" placeholder="*****">
       <p id="errorPassword" class="errorText"></p>   
+    </div>
+  </div>
+  <div class="row" id="newPassword">
+    <div class="col-25">
+      <label for="lname">Nuova Password:</label>
+    </div>
+    <div class="col-75">
+      <input type="password" id="newPasswordIn" name="password" placeholder="*****">
+      <p id="errorNewPassword" class="errorText"></p>   
+    </div>
+  </div>
+  <div class="row" id="confPassword">
+    <div class="col-25">
+      <label for="lname">Conferma Password:</label>
+    </div>
+    <div class="col-75">
+      <input type="password" id="confPasswordIn" name="password" placeholder="*****">
+      <p id="errorConPassword" class="errorText"></p>   
     </div>
   </div>
   <div class="row">

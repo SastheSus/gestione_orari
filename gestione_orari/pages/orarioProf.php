@@ -26,7 +26,7 @@
 <body onload="controlloAss(<?php echo $_POST['id']; ?>)">
 <button onclick="Apri()" id="Apri"><img src="../images/hamMenu.png" alt=""></button>
     <header>
-        <h1><b>I.I.S ITALO CALVINO</b></h1>
+        <h1><b>I.I.S. ITALO CALVINO</b></h1>
     </header>
     <div id="sidebar">
         <button onclick="chiudi()" id="butClose"><img src="../images/chiudi.png" alt=""></button>

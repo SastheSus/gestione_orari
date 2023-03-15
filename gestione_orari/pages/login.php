@@ -2,6 +2,8 @@
     session_start();
     $email= $_REQUEST["email"];
     $password= $_REQUEST["password"];
+    $newPassword= $_REQUEST["newPassword"];
+    $confPassword= $_REQUEST["confPassword"];
     $hint="";
     try{
         $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
@@ -9,8 +11,16 @@
         $query -> execute([$email]);
         
         while($row = $query->fetch()){
-            if($row[2]==$password){
-                $hint= "Success";
+            if($row[2]=="PASSWORD"){
+                if(newPassword==null){
+                    $hint= "OP";
+                }
+                else{
+                    
+                }
+                
+            }
+            else if($row[2]==$password){
                 $_SESSION["id"]=$row[0];
                 $_SESSION["nome"]=$row[5];
                 $_SESSION["cognome"]=$row[4];

@@ -25,7 +25,7 @@
 <body>
 <button onclick="Apri()" id="Apri"><img src="../images/hamMenu.png" alt=""></button>
     <header>
-        <h1><b>I.I.S ITALO CALVINO</b></h1>
+        <h1><b>I.I.S. ITALO CALVINO</b></h1>
         <?php
             if(isset($_SESSION['nome'])){
                 echo "<h1>".$_SESSION['cognome']." ".$_SESSION['nome']."</h1>";
