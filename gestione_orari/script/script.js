@@ -1,22 +1,32 @@
 function refresh() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
+        alert(this.responseText)
         result = this.responseText;
     }
-    xhttp.open("GET", "../pages/parser.php");
+    xhttp.open("GET", "../pages/parser.php?materie="+"../file/EXP_MATIERE.txt"+"&prof="+"../file/EXP_PROFESSEUR.txt"+"&classi="+"../file/EXP_CLASSE.txt"+"&ore="+"../file/EXP_COURS.txt");
     xhttp.send();  
 }
 
 function assente(d,h,id,m,idH,idDiv) {
     week = document.getElementById("a").value;
     const xhttp = new XMLHttpRequest();
-    alert(d+' '+h+' '+id+' '+m)
     xhttp.onload = function() {
         result = this.responseText;
-        alert(result)
         document.getElementById(idDiv).style.backgroundColor="red";
     }
     xhttp.open("GET", "../pages/sostituzioni.php?d="+d+"&h="+h+"&id="+id+"&m="+m+"&idH="+idH+"&week="+week);
+    xhttp.send();
+}
+
+function fuoriclasse(d,h,id,m,idH,idDiv) {
+    week = document.getElementById("a").value;
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        result = this.responseText;
+        document.getElementById(idDiv).style.backgroundColor="red";
+    }
+    xhttp.open("GET", "../pages/fuoriclasse.php?d="+d+"&h="+h+"&id="+id+"&m="+m+"&idH="+idH+"&week="+week);
     xhttp.send();
 }
 
@@ -35,6 +45,24 @@ function controlloAss(id){
         }
     }
     xhttp.open("GET", "../pages/controlloAss.php?id="+id+"&week="+week);
+    xhttp.send();
+}
+
+function controlloAssClasse(id){
+    week = document.getElementById("a").value;
+    var father= document.getElementById("orarioClasse").querySelectorAll(".ora");
+    for(i=0;i<father.length;i++){
+        father[i].style.backgroundColor="#a2beec";
+    }
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        resp = this.responseText;
+        resp = resp.split(",");
+        for(i=0;i<resp.length;i++){
+            document.getElementById(resp[i]).style.backgroundColor="red";
+        }
+    }
+    xhttp.open("GET", "../pages/controlloAssClasse.php?id="+id+"&week="+week);
     xhttp.send();
 }
 

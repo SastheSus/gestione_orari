@@ -30,6 +30,7 @@
             if(isset($_SESSION['nome'])){
                 echo "<h3 id='nomeText'>".$_SESSION['cognome']." ".$_SESSION['nome']."</h3>";
             }
+            $prof = $_POST["id"];
         ?>
     </header>
     <div id="sidebar">
@@ -54,7 +55,6 @@
     <div id="menuV">
         <div id="child2">
             <?php
-                $prof = $_POST["id"];
                 $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
                 $query = $pdo->prepare("SELECT nome, cognome FROM prof WHERE id=?");
                 $query->execute([$prof]);

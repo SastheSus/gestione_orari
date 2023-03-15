@@ -1,5 +1,12 @@
 <?php
-
+$materie= $_REQUEST["materie"];
+echo $materie;
+$prof= $_REQUEST["prof"];
+echo $prof;
+$classi= $_REQUEST["classi"];
+echo $classi;
+$ore= $_REQUEST["ore"];
+echo $ore;
     try{
       $i=0;
       $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
@@ -12,6 +19,8 @@
       $query= $pdo->prepare("DELETE FROM supplenza");
       $query->execute();
       $query= $pdo->prepare("DELETE FROM assenza");
+      $query->execute();
+      $query= $pdo->prepare("DELETE FROM assenzaclasse");
       $query->execute();
       $query= $pdo->prepare("DELETE FROM prof ");
       $query->execute();
@@ -26,7 +35,7 @@
       $materieA = array();
       $classiA = array();
 
-      $materieFile = fopen("../file/EXP_MATIERE.txt", "r") or die("Unable to open file!");//Parser Materie
+      $materieFile = fopen($materie, "r") or die("Unable to open file!");//Parser Materie
       $i=0;
       while(!feof($materieFile)) {
         $riga= fgets($materieFile);
@@ -43,7 +52,7 @@
       }
       fclose($materieFile);
 
-      $professoriFile = fopen("../file/EXP_PROFESSEUR.txt", "r") or die("Unable to open file!");//Parser Professore
+      $professoriFile = fopen($prof, "r") or die("Unable to open file!");//Parser Professore
       $i=0;
       while(!feof($professoriFile)) {
         $riga= fgets($professoriFile);
@@ -106,7 +115,7 @@
       for($i = 0;$i<sizeof($professoriA);$i++ ){
       }
 
-      $classeFile = fopen("../file/EXP_CLASSE.txt", "r") or die("Unable to open file!");//Parser Classe
+      $classeFile = fopen($classi, "r") or die("Unable to open file!");//Parser Classe
       $i=0;
       while(!feof($classeFile)) {
         $riga= fgets($classeFile);
@@ -129,7 +138,7 @@
       fclose($classeFile);
 
 
-      $oreFile = fopen("../file/EXP_COURS.txt", "r") or die("Unable to open file!");//Parser Materie
+      $oreFile = fopen($ore, "r") or die("Unable to open file!");//Parser Materie
       $i=0;
       $z=1;
       $controllo=false;

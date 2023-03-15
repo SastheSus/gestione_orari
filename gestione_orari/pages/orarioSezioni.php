@@ -21,7 +21,7 @@
         }
     </script>
 </head>
-<body>
+<body onload="controlloAssClasse('<?php echo $_POST['id']; ?>')">
     <header>
         <button id="Apri"><img src="../images/hamMenu.png" onclick="Apri()" alt=""></button>
         <h1><b>I.I.S. ITALO CALVINO</b></h1>
@@ -30,6 +30,7 @@
             if(isset($_SESSION['nome'])){
                 echo "<h3 id='nomeText'>".$_SESSION['cognome']." ".$_SESSION['nome']."</h3>";
             }
+            $classe = $_POST["id"];
         ?>
     </header>
     <div id="sidebar">
@@ -45,12 +46,17 @@
     <a href="listaSezioni.php" id="indietro"><object data="../images/tornaIndietro.svg" id="back"></object><p><b>Torna indietro</p></b></a>
     <div id="opzioni">
         <button id="stampa">Stampa PDF</button>
+        <div id="sett">
+            <object data="../images/tornaIndietro.svg" id="sPrima"></object>
+            <input type="week" name="" id="a" onchange="controlloAss(<?php echo $prof?>)"value="<?php echo date('Y').'-W'.date('W');?>"></input>
+            <object data="../images/avanti.svg" id="sDopo"></object>
+        </div>
     </div>
 
     <div id="menuV">
         <div id="child2">
-            <h2>ORARIO</h2>
-            <div id="orarioProf">
+            <h2>ORARIO <?php echo $_POST['id']; ?></h2>
+            <div id="orarioClasse">
                 <h3 class="primo" id="int_ora">Ora</h3>
                 <h3 class="giorno">Lunedì</h3>
                 <h3 class="giorno">Martedì</h3>
@@ -67,7 +73,6 @@
                 <h3 class="rows-8 primo">15:00</h3>
                 <h3 class="rows-9 primo">16:00</h3>
                 <?php
-                    $classe = $_POST["id"];
                     
                     try {
                         $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
@@ -90,8 +95,8 @@
                             $m="'salute'";
                             $idH="'".$precedente[0]."'";
                             $idDiv="";
-                            $idDiv= "'".strval(getDay($precedente[3]))."-".strval(getHour($precedente[4]))."'";
-                            $func='"assente('.$d.','.$h.','.$p.','.$m.','.$idH.','.$idDiv.')"';
+                            $idDiv= $idH;
+                            $func='"fuoriclasse('.$d.','.$h.','.$p.','.$m.','.$idH.','.$idDiv.')"';
 
                             
                             if($precedente[4]==$riga[4]-1 && $precedente[6]==$precedente[6]){
@@ -102,11 +107,11 @@
                                 $durata=$precedente[2];
                             }
                             if($precedente[4]!=0){
-                                echo "<div id='".getDay($precedente[3])."-".getHour($precedente[4])."' class='ora' style='grid-row-start:".getHour($precedente[4]).";  grid-column-start:".getDay($precedente[3])."'>".$precedente[5]."</div>";
+                                echo "<div id=".$idH." class='ora' style='grid-row-start:".getHour($precedente[4]).";  grid-column-start:".($precedente[3]+1)."' onclick=".$func.">".$precedente[5]."</div>";
                             }
                             $precedente=$riga;
                         }
-                        echo "<div id='".getDay($precedente[3])."-".getHour($precedente[4])."' class='ora' style='grid-row-start:".getHour($precedente[4]).";  grid-column-start:".getDay($precedente[3])."'>".$precedente[5]."</div>";
+                        echo "<div id=".$idH." class='ora' style='grid-row-start:".getHour($precedente[4]).";  grid-column-start:".($precedente[3]+1)."' onclick=".$func.">".$precedente[5]."</div>";
                         $pdo = null; // chiudo la connessione
                     } catch (PDOException $e){
                         echo "Impossibile connettersi al server di database. ".$e;
@@ -141,26 +146,6 @@
                                 break;
                             case 16:
                                 return 10;
-                                break;
-                        }
-                    }
-
-                    function getDay($day){
-                        switch ($day){
-                            case "lunedi":
-                                return 2;
-                                break;
-                            case "martedi":
-                                return 3;
-                                break;
-                            case "mercoledi":
-                                return 4;
-                                break;
-                            case "giovedi":
-                                return 5;
-                                break;
-                            case "venerdi":
-                                return 6;
                                 break;
                         }
                     }
