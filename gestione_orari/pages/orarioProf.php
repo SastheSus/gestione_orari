@@ -88,6 +88,8 @@
 
                         $durata=0;
 
+                        
+
                         while ($riga = $query->fetch()) {
 
                             $d="'".$riga[3]."'";
