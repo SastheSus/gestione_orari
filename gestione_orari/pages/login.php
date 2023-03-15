@@ -11,12 +11,18 @@
         $query -> execute([$email]);
         
         while($row = $query->fetch()){
-            if($row[2]=="PASSWORD"){
-                if(newPassword==null){
+            if($row[2]=="PASSWORD"){ 
+                if($newPassword==null){
                     $hint= "OP";
                 }
                 else{
-                    
+                    $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
+                    $query = $pdo->prepare("UPDATE prof SET pass=? WHERE id=?");
+                    $query -> execute([$newPassword, $row[0]]);
+                    $_SESSION["id"]=$row[0];
+                    $_SESSION["nome"]=$row[5];
+                    $_SESSION["cognome"]=$row[4];
+                    $hint="Change Success";
                 }
                 
             }
@@ -24,6 +30,7 @@
                 $_SESSION["id"]=$row[0];
                 $_SESSION["nome"]=$row[5];
                 $_SESSION["cognome"]=$row[4];
+                $hint="Change Success";
             }
             else{
                 $hint= "NP";
