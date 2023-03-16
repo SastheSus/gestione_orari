@@ -23,7 +23,6 @@ function tryLog(){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         var result = this.responseText;
-        window.alert(result)
         switch (result){
             case "NE":
                 document.getElementById("email").style.border= "1px solid red";
@@ -42,6 +41,12 @@ function tryLog(){
                 document.getElementById("confPasswordIn").style.display= "";
                 document.getElementById("acc").style.display= "none";
                 document.getElementById("acc2").style.display= "none";
+                return false;
+            break
+            case "PS":
+                document.getElementById("newPassword").style.border= "1px solid red";
+                document.getElementById("confPassword").style.border= "1px solid red";
+                document.getElementById("errorConPassword").innerHTML="Password non coincidono";
                 return false;
             break
         }

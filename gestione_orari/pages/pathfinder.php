@@ -39,10 +39,10 @@ if($ass != null){
     while($prof=$query->fetch()){
         if($prof['idProf']!=""){
             if($sup!=null && $sup[0]['idProf']==$prof['idProf']){
-                $result .= $prof['idProf']."*,";
+                $result .= $prof['nome']." ".$prof['cognome']."-".$prof['idProf']."*,";
             }
             else{
-                $result .= $prof['idProf'].",";
+                $result .= $prof['nome']." ".$prof['cognome']."-".$prof['idProf'].",";
             }
         }
     }

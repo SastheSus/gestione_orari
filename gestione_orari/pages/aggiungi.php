@@ -18,6 +18,7 @@
         }
     </script>
     <script src="../script/login.js"></script>
+    <script src="../script/script.js"></script>
 </head>
 <body>
     <header>
@@ -95,6 +96,7 @@
                 } else {
                     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
                         echo "Il file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " è stato caricato.";
+                        echo '<script type="text/javascript">refreshLoad();</script>';
                         header("index.php");
                     } else {
                         echo "C'è stato un errore caricando il tuo file.";
@@ -103,6 +105,10 @@
             }
 
             ?>
+    </div>
+    <div id=loadingArea>
+        <img id="gif" src="../images/loading.gif" alt="">
+        <p>Loading DB</p>
     </div>
 </body>
 </html>

@@ -1,11 +1,25 @@
 function refresh() {
+    document.getElementById("loadingArea").style.display="flex";
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         alert(this.responseText)
         result = this.responseText;
+        document.getElementById("loadingArea").style.display="none";
     }
     xhttp.open("GET", "../pages/parser.php?materie="+"../file/EXP_MATIERE.txt"+"&prof="+"../file/EXP_PROFESSEUR.txt"+"&classi="+"../file/EXP_CLASSE.txt"+"&ore="+"../file/EXP_COURS.txt");
     xhttp.send();  
+}
+
+function refreshLoad(){
+    document.getElementById("loadingArea").style.display="flex";
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        alert(this.responseText)
+        result = this.responseText;
+        document.getElementById("loadingArea").style.display="none";
+    }
+    xhttp.open("GET", "../pages/parser.php?materie="+"../file/EXP_MATIERE.txt"+"&prof="+"../file/EXP_PROFESSEUR.txt"+"&classi="+"../file/EXP_CLASSE.txt"+"&ore="+"../file/EXP_COURS.txt");
+    xhttp.send(); 
 }
 
 function assente(d,h,id,m,idH,idDiv) {
@@ -73,12 +87,15 @@ function pathfinder(id){
         while (list.hasChildNodes()) {
             list.removeChild(list.firstChild);
         }
+        window.alert(this.response)
         resp =(this.response).split(",");
         for(i=0;i<resp.length;i++){
 
             const node = document.createElement("li");
 
-            node.setAttribute("onclick","sostituisci("+resp[i]+","+id+")")
+            var idProf= resp[i].split("-")[1]
+
+            node.setAttribute("onclick","sostituisci("+idProf+","+id+")")
 
             if(resp[i].includes("*")){
                 node.setAttribute("class","assigned")
@@ -86,7 +103,7 @@ function pathfinder(id){
             }
 
             node.setAttribute("id","prof"+[i])
-            const textnode = document.createTextNode(resp[i]);
+            const textnode = document.createTextNode(resp[i].split("-")[0]);
 
             node.appendChild(textnode);
 

@@ -64,7 +64,7 @@
                     while($row=$query->fetch()){
                         $t = 'onclick="pathfinder('.$row[0].')"';
                         $classe = classe($row[0],$pdo);
-                        echo "<button class='cardProf' ".$classe."".$t." >".$row['nome']." ".$row['cognome']."<br>(".$row['giorno']." ".$row['ora'].")</button>";
+                        echo "<button class='cardProf' ".$classe."".$t.">".$row['nome']." ".$row['cognome']."<br>(".$row['giorno']." ".$row['ora'].")</button>";
                     }
 
                     function classe($idAssenza,$pdo){
@@ -86,8 +86,6 @@
 
                 ?>
             </div>
-            <button id="auto">ASSEGNA</button> 
-            <button id="salva">SALVA</button>
             
         </div>
         <div id="lista" class="figlio">
