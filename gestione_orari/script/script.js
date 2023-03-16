@@ -2,6 +2,7 @@ function refresh() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         alert(this.responseText)
+        console.log(this.responseText)
         result = this.responseText;
     }
     xhttp.open("GET", "../pages/parser.php?materie="+"../file/EXP_MATIERE.txt"+"&prof="+"../file/EXP_PROFESSEUR.txt"+"&classi="+"../file/EXP_CLASSE.txt"+"&ore="+"../file/EXP_COURS.txt");

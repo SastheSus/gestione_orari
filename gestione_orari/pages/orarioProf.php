@@ -80,6 +80,11 @@
                 <h3 class="rows-9 primo">16:00</h3>
                 <?php
                     
+                    $y = array();
+                    $x = array(-1,-1,-1,-1,-1);
+                    for($i=0;$i<9;$i++){
+                        array_push($y,$x);
+                    }
                     
                     try {
                         $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
@@ -101,11 +106,19 @@
                             $idDiv= "'".strval($riga[0])."'";
                             $func='"assente('.$d.','.$h.','.$p.','.$m.','.$idH.','.$idDiv.')"';
                             if($riga[4]!=0){
-                                echo "<div id='".$riga[0]."' class='ora' style='grid-row-start:".getHour($riga[4]).";  grid-column-start:".getDay($riga[3])."' onclick=".$func.">".$riga[6]."<br>(".$riga[5].")</div>";
+                                echo "<div id='".$riga[0]."' class='ora' style='grid-row-start:".getHour($riga[4]).";  grid-column-start:".($riga[3]+1)."' onclick=".$func.">".$riga[6]."<br>(".$riga[5].")</div>";
+                                $y[$riga[4]-8][$riga[3]-1]=$riga[0];
                             }
                             $riga=$riga;
                         }
                         $pdo = null; // chiudo la connessione
+                        for ($i=0; $i <9 ; $i++) { 
+                            for ($e=0; $e <5 ; $e++) {
+                                if($y[$i][$e]==-1){
+                                    echo "<div id='0' class='oraVuota' style='grid-row-start:".($i+2).";  grid-column-start:".($e+2).";' ></div>";    
+                                }
+                            }
+                        }
                     } catch (PDOException $e){
                         echo "Impossibile connettersi al server di database. ".$e;
                         exit();

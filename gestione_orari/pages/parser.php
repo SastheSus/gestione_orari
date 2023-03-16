@@ -1,12 +1,8 @@
 <?php
 $materie= $_REQUEST["materie"];
-echo $materie;
 $prof= $_REQUEST["prof"];
-echo $prof;
 $classi= $_REQUEST["classi"];
-echo $classi;
 $ore= $_REQUEST["ore"];
-echo $ore;
     try{
       $i=0;
       $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
@@ -172,14 +168,26 @@ echo $ore;
             if(strlen($place)<=1){
               $place="SEDE";
             } else {
-              $place=preg_replace('/[<->]/', '', $pino[2]);
+              $place=preg_replace('/[<->-"]/', '', $pino[2]);
             }
-            $ora= explode("h", $pino[8])[0];
+            $giorno="";
+            $ora= "";
+            for($aus=0;$aus<sizeof($dati);$aus++){
+              if(strpos($dati[$aus],"edi")){
+                $giorno=$dati[$aus];
+                $ora=explode("h", $dati[$aus+1])[0];
+                echo "|".$giorno."|";
+              } else if(strpos($dati[$aus],"erdi")){
+                $giorno=$dati[$aus];
+                $ora=explode("h", $dati[$aus+1])[0];
+                echo "|".$giorno."|";
+              }
+            }
             $durata=explode("h", $dati[1])[0];
             do{
               $sql = "INSERT INTO ora (id, luogo, durata, giorno, ora, idMateria, idClasse) VALUES (?,?,?,?,?,?,?)";
               $stmt= $pdo->prepare($sql); 
-              $stmt->execute([$z, $place,1, dayWeek($pino[7]), $ora, $dati[4] , $class]);
+              $stmt->execute([$z, $place,1, dayWeek($giorno), $ora, $dati[4] , $class]);
 
               for($y=0;$y<sizeof($listanomi);$y++){
                 $variabile= trim($listanomi[$y]);
@@ -199,7 +207,6 @@ echo $ore;
               $z++;
               $durata=$durata-1;
               $ora=$ora+1;
-              echo "--".$ora."--";
             }while($durata>0);
             
           }
@@ -217,14 +224,27 @@ echo $ore;
             if(strlen($place)<=1){
               $place="SEDE";
             } else {
-              $place=preg_replace('/[<->]/', '', $dati[8]);
+              $place=preg_replace('/[<->-"]/', '', $dati[8]);
             }
+            $giorno="";
+            $ora= "";
+            for($aus=0;$aus<sizeof($dati);$aus++){
+              if(strpos($dati[$aus],"edi")){
+                $giorno=$dati[$aus];
+                $ora=explode("h", $dati[$aus+1])[0];
+                echo "|".$giorno."|";
+              } else if(strpos($dati[$aus],"erdi")){
+                $giorno=$dati[$aus];
+                $ora=explode("h", $dati[$aus+1])[0];
+                echo "|".$giorno."|";
+              }
+            }
+            echo "finito";
             $durata=explode("h", $dati[1])[0];
-            $ora= explode("h", $dati[14])[0];
             do{
               $sql = "INSERT INTO ora (id, luogo, durata, giorno, ora, idMateria, idClasse) VALUES (?,?,?,?,?,?,?)";
               $stmt= $pdo->prepare($sql); 
-              $stmt->execute([$z, $place, 1, dayWeek($dati[13]), $ora, $dati[4] , $class]);
+              $stmt->execute([$z, $place, 1, dayWeek($giorno), $ora, $dati[4] , $class]);
 
               
               $sql = "INSERT INTO profhaora (idProf, idOra) VALUES (?,?)";
