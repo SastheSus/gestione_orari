@@ -73,7 +73,11 @@
                 <h3 class="rows-8 primo">15:00</h3>
                 <h3 class="rows-9 primo">16:00</h3>
                 <?php
-                    
+                    $y = array();
+                    $x = array(-1,-1,-1,-1,-1);
+                    for($i=0;$i<9;$i++){
+                        array_push($y,$x);
+                    }
                     try {
                         $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
                         $query = $pdo->prepare("SELECT * FROM ora WHERE idClasse=?");
@@ -107,12 +111,21 @@
                                 $durata=$precedente[2];
                             }
                             if($precedente[4]!=0){
-                                echo "<div id=".$idH." class='ora' style='grid-row-start:".getHour($precedente[4]).";  grid-column-start:".($precedente[3]+1)."' onclick=".$func.">".$precedente[5]."</div>";
+                                echo "<div id=".$idH." class='ora' style='grid-row-start:".getHour($precedente[4]).";  grid-column-start:".($precedente[3]+1)."' onclick=".$func.">".$precedente[5]."</div>"; 
+                                $y[$precedente[4]-8][$precedente[3]-1]=$idH;
                             }
                             $precedente=$riga;
                         }
-                        echo "<div id=".$idH." class='ora' style='grid-row-start:".getHour($precedente[4]).";  grid-column-start:".($precedente[3]+1)."' onclick=".$func.">".$precedente[5]."</div>";
+                        echo "<div id=".$idH." class='ora' style='grid-row-start:".getHour($precedente[4]).";  grid-column-start:".($precedente[3]+1)."' onclick=".$func.">".$precedente[5]."</div>"; 
+                        $y[$precedente[4]-8][$precedente[3]-1]=$idH;
                         $pdo = null; // chiudo la connessione
+                        for ($i=0; $i <9 ; $i++) { 
+                            for ($e=0; $e <5 ; $e++) {
+                                if($y[$i][$e]==-1){
+                                    echo "<div id='0' class='oraVuota' style='grid-row-start:".($i+2).";  grid-column-start:".($e+2).";' ></div>";   
+                                }
+                            }
+                        }
                     } catch (PDOException $e){
                         echo "Impossibile connettersi al server di database. ".$e;
                         exit();

@@ -3,6 +3,7 @@ function refresh() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         alert(this.responseText)
+        console.log(this.responseText)
         result = this.responseText;
         document.getElementById("loadingArea").style.display="none";
     }
