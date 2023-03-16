@@ -38,6 +38,16 @@ create table assenza(
     FOREIGN KEY (idProf) REFERENCES prof(id),
     FOREIGN KEY (idOra) REFERENCES ora(id)
 );
+create table assenzaClasse(
+    id integer PRIMARY KEY,
+    motivo varchar(255),
+    idClasse varchar(255),
+    idOra integer,
+    anno integer,
+    settimana integer,
+    FOREIGN KEY (idClasse) REFERENCES classe(nome),
+    FOREIGN KEY (idOra) REFERENCES ora(id)
+);
 
 create table supplenza(
     id integer PRIMARY KEY NOT NULL AUTO_INCREMENT,

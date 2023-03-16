@@ -41,33 +41,68 @@
     </div>
     <div id="menu">
             <div id="child1">
-                <form>
+                <form action="aggiungi.php?i=1" method="post" enctype="multipart/form-data">
                     <label><b>Elenco professori:</b></label>
-                    <input type="file" name="file1" id="file1">
+                    <input type="file" name="file" id="file1">
                     <input type="submit" value="Carica"  class="caricaFile">
                 </form>
             </div>
             <div id="child2">
-                <form>
+                <form action="aggiungi.php?i=2" method="post" enctype="multipart/form-data">
                     <label><b>Elenco sezioni:</b></label>
-                    <input type="file" name="file2" id="file2">
+                    <input type="file" name="file" id="file2">
                     <input type="submit" value="Carica" class="caricaFile">
                 </form>
             </div>
             <div id="child3">
-                <form>
-                    <label><b>Orario professori:</b></label>
-                    <input type="file" name="file3" id="file3">
+                <form action="aggiungi.php?i=3" method="post" enctype="multipart/form-data">
+                    <label><b>Ore:</b></label>
+                    <input type="file" name="file" id="file3">
                     <input type="submit" value="Carica"  class="caricaFile">
                 </form>
             </div>
             <div id="child4">
-                <form>
-                    <label><b>Orario sezioni:</b></label>
-                    <input type="file" name="file4" id="file4">
+                <form action="aggiungi.php?i=4" method="post" enctype="multipart/form-data">
+                    <label><b>Materie:</b></label>
+                    <input type="file" name="file" id="file4">
                     <input type="submit" value="Carica"  class="caricaFile">
                 </form>
             </div>
+            <?php
+            if($_REQUEST!=null){
+                $target_dir = "../file/";
+                $target_file="";
+                if($_REQUEST['i']==1){
+                    $target_file = $target_dir . basename("EXP_PROFESSEUR.txt");
+                }else if($_REQUEST['i']==2){
+                    $target_file = $target_dir . basename("EXP_CLASSE.txt");
+                }else if($_REQUEST['i']==3){
+                    $target_file = $target_dir . basename("EXP_COURS.txt");
+                }else if($_REQUEST['i']==4){
+                    $target_file = $target_dir . basename("EXP_MATIERE.txt");
+                }
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+
+                if($imageFileType != "txt") {
+                    echo "Sono ammessi solo file .txt. ";
+                    $uploadOk = 0;
+                }
+
+                if ($uploadOk == 0) {
+                    echo "Il file non è stato caricato. ";
+                } else {
+                    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+                        echo "Il file ". htmlspecialchars( basename( $_FILES["file"]["name"])). " è stato caricato.";
+                        header("index.php");
+                    } else {
+                        echo "C'è stato un errore caricando il tuo file.";
+                    }
+                }
+            }
+
+            ?>
     </div>
 </body>
 </html>
