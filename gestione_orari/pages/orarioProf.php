@@ -45,7 +45,6 @@
     
     <a href="listaProf.php" id="indietro"><object data="../images/tornaIndietro.svg" id="back"></object><p><b>Torna indietro</p></b></a>
     <div id="opzioni">
-        <button id="stampa">Stampa PDF</button>
         <div id="sett">
             <input type="week" name="" id="a" onchange="controlloAss(<?php echo $prof?>)"value="<?php echo date('Y').'-W'.date('W');?>"></input>
         </div>

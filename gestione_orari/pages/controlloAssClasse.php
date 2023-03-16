@@ -1,6 +1,6 @@
 <?php
 
-$id= $_REQUEST["id"];   //idProf
+$id= $_REQUEST["id"];   //idClasse
 $week= $_REQUEST["week"]; //anno e settimana
 $week = explode("-W",$week);
 
