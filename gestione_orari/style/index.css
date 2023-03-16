@@ -414,3 +414,26 @@ h1{
   width: 80%;
   text-align: center;
 }
+
+#loadingArea{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+#gif{
+  width: 100px;
+  height: 100px;
+}
+
+p{
+  margin-top: 10px;
+  font-size: 25px;
+}

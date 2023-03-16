@@ -79,7 +79,10 @@
             </div>
         </div>
     </div>
-    
+    <div id=loadingArea>
+        <img id="gif" src="../images/loading.gif" alt="">
+        <p>Loading DB</p>
+    </div>
     
 </body>
 </html>
