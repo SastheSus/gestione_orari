@@ -46,14 +46,13 @@
             <div id="centro">
             <div id="barraRicerca">
                 <img id="lente" src="../images/lente.svg">
-                <input type="text" placeholder="Cerca Professore" id="ricerca">
-                <button id="invia">Invia</button>
+                <input type="text" placeholder="Cerca Professore" oninput="cercaProf()" id="ricerca">
             </div>
             <form id="listaProf" method="post" action="orarioProf.php" >
                 <?php
 
-                //ciao mamma guarda come mi diverto
-                try{//burro giovanni
+                
+                try{
                     $pdo = new PDO("mysql:host=localhost; dbname=gestione_orario", "root", "");
                     $query = $pdo->prepare("SELECT id, nome, cognome FROM prof");
                     $query->execute();

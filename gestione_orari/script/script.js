@@ -77,3 +77,24 @@ function sostituisci(resp, id){
     xhttp.open("GET", "../pages/pathresolver.php?id="+id+"&idProf="+resp);
     xhttp.send();
 }
+
+function cercaProf(){
+    var profCercato = document.getElementById("ricerca").value
+    var lista= document.getElementById("listaProf");
+    if(profCercato!=""){
+        for(var i=0;i<lista.children.length;i++){
+            if(!lista.children[i].innerHTML.toUpperCase().includes(profCercato.toUpperCase())){
+                lista.children[i].style.display = "none";
+            }
+            else{
+                lista.children[i].style.display = "inline-flex";
+            }
+        }
+
+    }
+    else{
+        for(var i=0;i<lista.length;i++){
+            lista.children[i].style.display = "inline-flex";
+        }
+    }
+}

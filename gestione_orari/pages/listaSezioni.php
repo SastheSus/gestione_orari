@@ -47,8 +47,7 @@
             <div id="centro">
             <div id="barraRicerca">
                 <img id="lente" src="../images/lente.svg">
-                <input type="text" placeholder="Cerca Professore" id="ricerca">
-                <button id="invia">Invia</button>
+                <input type="text" placeholder="Cerca Professore" oninput="cercaProf()" id="ricerca">
             </div>
             <form id="listaProf" method="post" action="orarioSezioni.php" >
                 <?php
