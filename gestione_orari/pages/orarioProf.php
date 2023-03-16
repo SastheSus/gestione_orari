@@ -47,9 +47,7 @@
     <div id="opzioni">
         <button id="stampa">Stampa PDF</button>
         <div id="sett">
-            <object data="../images/tornaIndietro.svg" id="sPrima"></object>
             <input type="week" name="" id="a" onchange="controlloAss(<?php echo $prof?>)"value="<?php echo date('Y').'-W'.date('W');?>"></input>
-            <object data="../images/avanti.svg" id="sDopo"></object>
         </div>
     </div>
     <div id="menuV">
