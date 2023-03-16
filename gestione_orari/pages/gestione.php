@@ -64,7 +64,25 @@
                     while($row=$query->fetch()){
                         $t = 'onclick="pathfinder('.$row[0].')"';
                         $classe = classe($row[0],$pdo);
-                        echo "<button class='cardProf' ".$classe."".$t.">".$row['nome']." ".$row['cognome']."<br>(".$row['giorno']." ".$row['ora'].")</button>";
+                        $giorno="";
+                        switch($row['giorno']){
+                            case 1:
+                                $giorno="lunedì";
+                                break;
+                            case 2:
+                                $giorno="martedì";
+                                break;
+                            case 3:
+                                $giorno="mercoledì";
+                                break;
+                            case 4:
+                                $giorno="giovedì";
+                                break;
+                            case 5:
+                                $giorno="venerdì";
+                                break;
+                        }
+                        echo "<button class='cardProf' ".$classe."".$t.">".$row['nome']." ".$row['cognome']."<br>(".$giorno." ".$row['ora'].")</button>";
                     }
 
                     function classe($idAssenza,$pdo){

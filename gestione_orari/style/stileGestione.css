@@ -147,6 +147,8 @@ div.content {
   flex-wrap: wrap;
   gap:1.5em;
   background-color: azure;
+  overflow-y:scroll;
+  height: 600px;
 }
 .figlio > h3{
   text-align: center;
@@ -167,7 +169,7 @@ li {
   position: relative;
   height: 50px;
   line-height: 50px;
-  width: 200px;
+  width: 300px;
   user-select: none;
   list-style: none;
   background-color: azure;
@@ -241,8 +243,10 @@ h1{
 }
 
 .cardProf{
-  width: 20vh;
-  height: 20vh;
+  width: 26vh;
+  height: 30vh;
+  margin:0;
+  font-size: 30px;
 }
 
 #loadingArea{
